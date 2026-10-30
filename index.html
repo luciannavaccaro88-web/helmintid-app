@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es" data-theme="oscuro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <!--
+      Tema antes del primer pintado.
+
+      Si el tema se aplicase solo desde React, el primer fotograma se pintaría
+      con el tema equivocado y se vería un destello blanco. El atributo ya va
+      puesto en <html> para el caso por defecto, y este script síncrono —antes
+      de cualquier CSS— lo corrige si hay preferencia guardada. Es deliberado
+      que no sea un módulo: tiene que ejecutarse aquí mismo, sin esperar.
+    -->
+    <script>
+      (function () {
+        try {
+          var p = localStorage.getItem('helmintid.theme');
+          var t =
+            p === 'claro' || p === 'oscuro'
+              ? p
+              : p === 'auto'
+                ? matchMedia('(prefers-color-scheme: light)').matches
+                  ? 'claro'
+                  : 'oscuro'
+                : 'oscuro';
+          var r = document.documentElement;
+          r.setAttribute('data-theme', t);
+          r.style.colorScheme = t === 'oscuro' ? 'dark' : 'light';
+          var m = document.querySelector('meta[name=theme-color]');
+          if (m) m.setAttribute('content', t === 'oscuro' ? '#0F1413' : '#FAF6EF');
+        } catch (e) {
+          /* almacenamiento bloqueado: se queda el tema oscuro por defecto */
+        }
+      })();
+    </script>
+
+    <!--
+      Tiene que existir en el HTML aunque el script lo reescriba: es lo que
+      colorea la barra de estado del sistema con la aplicación instalada.
+    -->
+    <meta name="theme-color" content="#0F1413" />
+
+    <meta
+      name="description"
+      content="Herramienta docente para el diagnóstico diferencial morfológico de huevos de helmintos intestinales. No es un producto sanitario."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>HelmintID</title>
+    <script type="module" crossorigin src="./assets/index-CujFzNBw.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-CbXtAM7H.js">
+    <link rel="modulepreload" crossorigin href="./assets/core-BUOnEhAP.js">
+    <link rel="modulepreload" crossorigin href="./assets/kb-DtqU9_Ep.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-CXGAx8ra.css">
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      HelmintID necesita JavaScript para analizar la imagen en tu propio dispositivo. Todo el
+      procesamiento ocurre aquí: ninguna fotografía sale del teléfono.
+    </noscript>
+  </body>
+</html>

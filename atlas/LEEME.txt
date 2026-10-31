@@ -1,0 +1,38 @@
+LAMINAS DEL ATLAS QUE VIAJAN CON LA APLICACION
+==============================================
+
+Las imagenes que se dejen en esta carpeta las ve TODA la clase, porque se
+empaquetan con la aplicacion.
+
+COMO SE NOMBRAN
+---------------
+Un fichero .jpg por taxon, con el identificador del taxon como nombre. El
+identificador es el nombre del fichero YAML de la ficha, sin extension:
+
+    packages/kb/taxa/trichuris-trichiura.yaml
+    ->  apps/pwa/public/atlas/trichuris-trichiura.jpg
+
+Si el fichero no existe, la ficha muestra el hueco con trama y ofrece subir
+una imagen local. No hay que declarar nada en ningun sitio: basta con dejar
+el fichero aqui con el nombre correcto.
+
+FORMATO
+-------
+JPEG, lado mayor de 1200 px es mas que suficiente. Cada lamina deberia pesar
+menos de 200 kB: se precachean todas con la aplicacion para que el atlas
+funcione sin conexion, y el peso se suma.
+
+ANTES DE PONER UNA IMAGEN AQUI
+------------------------------
+Hay que poder redistribuirla. Una fotografia de la coleccion del departamento
+vale; una lamina escaneada de un atlas comercial, no. Las imagenes de CDC-DPDx
+son obra del gobierno estadounidense y estan en dominio publico.
+
+Esta carpeta es publica en cuanto la aplicacion se publica.
+
+LA OTRA VIA
+-----------
+Desde la propia aplicacion, en la ficha de cada taxon, hay un boton para
+anadir una imagen. Esa se guarda solo en el dispositivo de quien la sube y no
+necesita permiso de nadie, pero tampoco la ve el resto de la clase. Sirve para
+probar, o para que cada profesor use sus propias preparaciones.
